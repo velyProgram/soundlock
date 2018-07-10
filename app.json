@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "SoundLock",
+    "icon": "./src/images/music.png",
+    "version": "1.0.0",
+    "slug": "soundlock",
+    "ios": {
+      "bundleIdentifier": "com.velyprogram.soundlock",
+      "config": {
+        "googleMapsApiKey": "AIzaSyDXWfHvuDXiJPipNUPNGdzaVKdRum5zQ3M"
+      }
+    },
+    "android": {
+      "package": "com.velyprogram.soundlock",
+      "config": {
+        "googleMaps": {"apiKey": "AIzaSyDT5OddOyMNHhCTVicySd9bGb_CpXwQVE4"}
+      }
+    },
+    "sdkVersion": "27.0.0"
+  }
+}
