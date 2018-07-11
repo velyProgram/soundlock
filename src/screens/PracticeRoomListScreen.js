@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Button, Text, TouchableOpacity, Image } from 'react-native';
 import styled from 'styled-components';
 import { MapView } from "expo";
-import MenuIcon from '../images/menu.png'
+import MenuIcon from '../images/menu.png';
+import SideMenu from '../navigators/SideMenu';
 
 const Header = styled.View`
   height: 80;
@@ -49,9 +50,9 @@ class PracticeRoomListScreen extends React.Component {
           <SearchBtn>
             <Text>지역, 지하철 역으로 검색</Text>
           </SearchBtn>
-          <TouchableOpacity onPress={()=> this.props.openDrawer()}>
+          <TouchableOpacity onPress={()=> this.props.navigation.toggleDrawer()}>
             <Image style={{width: 30, height: 30}} source={MenuIcon} />
-          </TouchableOpacity>
+          </TouchableOpacity>  
         </Header>
         <MapView
           style={{

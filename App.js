@@ -1,8 +1,8 @@
 import React from 'react';
-import RootStack from './src/navigators/RootStack';
+import DrawerNavigator from './src/navigators/DrawerNavigator';
 
 export default class App extends React.Component {
   render() {
-    return <RootStack />;
+    return <DrawerNavigator />;
   }
 }

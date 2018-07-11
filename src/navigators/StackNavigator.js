@@ -8,7 +8,7 @@ import PracticeRoomSearchScreen from '../screens/PracticeRoomSearchScreen';
 import RecordingRoomSearchScreen from '../screens/RecordingRoomSearchScreen';
 import BandRoomSearchScreen from '../screens/BandRoomSearchScreen';
 
-const RootStack = createStackNavigator(
+const StackNavigator = createStackNavigator(
   {
     Home: HomeScreen,
     Login: LoginScreen,
@@ -20,8 +20,9 @@ const RootStack = createStackNavigator(
     BandRoomSearch: BandRoomSearchScreen,
   },
   {
+    headerMode: 'none',
     initialRouteName: 'Home',
   },
 );
 
-export default RootStack;
+export default StackNavigator;
