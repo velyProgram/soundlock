@@ -1,9 +1,39 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import styles from './SideMenu.style';
+import styled from 'styled-components';
 import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View} from 'react-native';
 
+const Container = styled.View`
+  padding-top: 20;
+  flex: 1;
+`;
+
+const NavItem = styled.Text`
+  padding-top: 10;
+  padding-bottom: 10;
+  padding-right: 10;
+  padding-left: 10;
+`;
+
+const NavSection = styled.View`
+  background-color: lightgray;
+`;
+
+const SectionHeading = styled.Text`
+  padding-top: 10;
+  padding-bottom: 10;
+  padding-right: 5;
+  padding-left: 5;
+`;
+
+const FooterContainer = styled.View`
+  padding-top: 20;
+  padding-bottom: 20;
+  padding-right: 20;
+  padding-left: 20;
+  background-color: lightgray;
+`;
 class SideMenu extends Component {
   navigateToScreen = (route) => () => {
     const navigateAction = NavigationActions.navigate({
@@ -14,36 +44,36 @@ class SideMenu extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
+      <Container>
         <ScrollView>
           <View>
-            <Text style={styles.sectionHeadingStyle}>
+            <SectionHeading>
               Section 1
-            </Text>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Page1')}>
+            </SectionHeading>
+            <NavSection>
+              <NavItem onPress={this.navigateToScreen('Page1')}>
               Page1
-              </Text>
-            </View>
+              </NavItem>
+            </NavSection>
           </View>
           <View>
-            <Text style={styles.sectionHeadingStyle}>
+            <SectionHeading>
               Section 2
-            </Text>
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Page2')}>
+            </SectionHeading>
+            <NavSection>
+              <NavItem onPress={this.navigateToScreen('Page2')}>
                 Page2
-              </Text>
-              <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Page3')}>
+              </NavItem>
+              <NavItem onPress={this.navigateToScreen('Page3')}>
                 Page3
-              </Text>
-            </View>
+              </NavItem>
+            </NavSection>
           </View>
         </ScrollView>
-        <View style={styles.footerContainer}>
+        <FooterContainer>
           <Text>This is my fixed footer</Text>
-        </View>
-      </View>
+        </FooterContainer>
+      </Container>
     );
   }
 }
