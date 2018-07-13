@@ -3,16 +3,16 @@ import HomeScreen from '../screens/HomeScreen';
 import RecordingRoomListScreen from '../screens/RecordingRoomListScreen';
 import SideMenu from './SideMenu';
 import LoginScreen from '../screens/LoginScreen';
-import PracticeRoomListScreen from '../screens/PracticeRoomListScreen';
 import BandRoomListScreen from '../screens/BandRoomListScreen';
 import PracticeRoomSearchScreen from '../screens/PracticeRoomSearchScreen';
 import RecordingRoomSearchScreen from '../screens/RecordingRoomSearchScreen';
 import BandRoomSearchScreen from '../screens/BandRoomSearchScreen';
+import MapSearch from '../components/MapSearch';
 
 export default createDrawerNavigator({
   Home: HomeScreen,
   Login: LoginScreen,
-  PracticeRoomList: PracticeRoomListScreen,
+  MapSearch: MapSearch,
   RecordingRoomList: RecordingRoomListScreen,
   BandRoomList: BandRoomListScreen,
   PracticeRoomSearch: PracticeRoomSearchScreen,

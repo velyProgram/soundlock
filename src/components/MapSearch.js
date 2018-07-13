@@ -3,18 +3,8 @@ import { View, Button, Text, TouchableOpacity, Image } from 'react-native';
 import styled from 'styled-components';
 import { MapView } from 'expo';
 import MenuIcon from '../images/menu.png';
-
-const Header = styled.View`
-  height: 80;
-  align-self: stretch;
-  background-color: white;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding-top: 30;
-  padding-left: 10;
-  padding-right: 10;
-`;
+import MapSelectSearchModal from './MapSelectSearchModal';
+import Header from './Header';
 
 const SearchBtn = styled.TouchableOpacity`
   border-top-left-radius: 25;
@@ -22,12 +12,10 @@ const SearchBtn = styled.TouchableOpacity`
   border-bottom-left-radius: 25;
   border-bottom-right-radius: 25;
   flex: 1;
-  height: 40;
+  height: 30;
   background-color: #dfdfdf;
   align-items: center;
   justify-content: center;
-  margin-right: 5;
-  margin-left: 5;
 `;
 
 const ListVewBtn = styled.TouchableOpacity`
@@ -36,24 +24,19 @@ const ListVewBtn = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-class PracticeRoomListScreen extends React.Component {
+class MapSearch extends React.Component {
+  state = {
+    locationSelectModalVisible: false,
+  };
   render() {
     return (
       <View style={{ flex: 1, flexDirection: 'column' }}>
-        <Header>
-          <Button
-            color="black"
-            title="<"
-            onPress={() => this.props.navigation.goBack()}
-          />
-          <SearchBtn>
+        <Header {...this.props}>
+          <SearchBtn
+            onPress={() => this.setState({ locationSelectModalVisible: true })}
+          >
             <Text>지역, 지하철 역으로 검색</Text>
           </SearchBtn>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.toggleDrawer()}
-          >
-            <Image style={{ width: 30, height: 30 }} source={MenuIcon} />
-          </TouchableOpacity>
         </Header>
         <MapView
           style={{
@@ -67,11 +50,15 @@ class PracticeRoomListScreen extends React.Component {
             longitudeDelta: 0.0421,
           }}
         />
-        <ListVewBtn style={{height: 50}}>
-          <Text style={{color: '#fff'}}>목록 보기</Text>
+        <ListVewBtn style={{ height: 50 }} onPress={() => this.props.navigation.navigate('RecordingRoomList')}>
+          <Text style={{ color: '#fff' }}>목록 보기</Text>
         </ListVewBtn>
+        <MapSelectSearchModal
+          visible={this.state.locationSelectModalVisible}
+          close={() => this.setState({ locationSelectModalVisible: false })}
+        />
       </View>
     );
   }
 }
-export default PracticeRoomListScreen;
+export default MapSearch;

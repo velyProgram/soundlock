@@ -9,21 +9,23 @@ import {
   ScrollView,
   Image,
   TextInput,
+  Dimensions
 } from 'react-native';
 import styled from 'styled-components';
 import MenuIcon from '../images/menu.png';
 import SubwaySearchModal from '../components/SubwaySearchModal';
+import Header from '../components/Header';
 
+const { width, height } = Dimensions.get('window');
 const Container = styled.View`
   flex-direction: row;
   align-items: center;
+  justify-content: space-around;
   padding-top: 15;
 `;
 
 const SearchCategoryBtn = styled.TouchableOpacity`
   height: 150;
-  margin-left: 10;
-  margin-right: 10;
   align-items: center;
   justify-content: center;
   background-color: orange;
@@ -31,6 +33,7 @@ const SearchCategoryBtn = styled.TouchableOpacity`
   border-top-right-radius: 5;
   border-bottom-left-radius: 5;
   border-bottom-right-radius: 5;
+  width: ${width * 0.45}
 `;
 
 const Card = styled.View`
@@ -44,31 +47,6 @@ const Card = styled.View`
   background-color: white;
 `;
 
-const Header = styled.View`
-  height: 80;
-  align-self: stretch;
-  background-color: white;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 30;
-  padding-left: 10;
-  padding-right: 10;
-`;
-
-const SearchBtn = styled.TouchableOpacity`
-  border-top-left-radius: 25;
-  border-top-right-radius: 25;
-  border-bottom-left-radius: 25;
-  border-bottom-right-radius: 25;
-  flex: 1;
-  height: 40;
-  background-color: #dfdfdf;
-  align-items: center;
-  justify-content: center;
-  margin-right: 5;
-  margin-left: 5;
-`;
 class RecordingRoomSearchScreen extends React.Component {
   state = {
     entries: [
@@ -99,30 +77,19 @@ class RecordingRoomSearchScreen extends React.Component {
   render() {
     return (
       <View>
-        <Header>
-          <Button
-            color="black"
-            title="<"
-            onPress={() => this.props.navigation.goBack()}
-          />
-          <TouchableOpacity
-            onPress={() => this.props.navigation.toggleDrawer()}
-          >
-            <Image style={{ width: 30, height: 30 }} source={MenuIcon} />
-          </TouchableOpacity>
-        </Header>
+        <Header {...this.props}/>
         <ScrollView>
           <Container>
-            <View style={{ flex: 1 }}>
+            <View>
               <SearchCategoryBtn
                 onPress={() =>
-                  this.props.navigation.navigate('PracticeRoomList')
+                  this.props.navigation.navigate('MapSearch')
                 }
               >
                 <Text>지도로 찾기</Text>
               </SearchCategoryBtn>
             </View>
-            <View style={{ flex: 1 }}>
+            <View>
               <SearchCategoryBtn onPress={() => this.setModalVisible(true)}>
                 <Text>지하철로 찾기</Text>
               </SearchCategoryBtn>
