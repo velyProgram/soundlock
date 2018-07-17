@@ -13,22 +13,22 @@ const Container = styled.View`
   margin-top: 35;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  padding-left: 35;
-  padding-right: 45;
+  justify-content: space-between;
+  height: 40;
+  padding-left: 15;
+  padding-right: 10;
   padding-bottom: 10;
 `;
 
-const BackBtn = styled.TouchableHighlight`
-  width: 20;
-  margin-left: 10;
-  position: absolute;
-  left: 10;
+const BackBtn = styled.TouchableOpacity`
+  width: 30;
+  margin-right: 10;
+  align-items: flex-start
 `;
 
 const MenuBtn = styled.TouchableOpacity`
-  position: absolute;
-  right: 10;
+  margin-left: 10;
+  align-items: flex-end;
 `;
 
 class Header extends React.Component {
@@ -40,7 +40,9 @@ class Header extends React.Component {
         <BackBtn onPress={() => this.props.navigation.goBack()}>
           <Text>{`<`}</Text>
         </BackBtn>
-        {children}
+        <View style={{flex: 1}}>
+          {children}
+        </View>
         <MenuBtn onPress={() => this.props.navigation.toggleDrawer()}>
           <Image style={{ width: 30, height: 30 }} source={MenuIcon} />
         </MenuBtn>
