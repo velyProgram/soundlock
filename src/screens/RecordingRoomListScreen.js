@@ -11,8 +11,8 @@ class RecordingRoomListScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1}}>
-        <Header>
-          <Text>녹음실</Text>
+        <Header {...this.props}>
+          <Text style={{alignSelf: 'center'}}>녹음실</Text>
         </Header>
       </View>
     );

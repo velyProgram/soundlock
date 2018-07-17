@@ -17,11 +17,10 @@ import SubwaySearchModal from '../components/SubwaySearchModal';
 import Header from '../components/Header';
 
 const { width, height } = Dimensions.get('window');
-const Container = styled.View`
+const CategoryBtnContainer = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  padding-top: 15;
 `;
 
 const SearchCategoryBtn = styled.TouchableOpacity`
@@ -79,7 +78,7 @@ class RecordingRoomSearchScreen extends React.Component {
       <View>
         <Header {...this.props}/>
         <ScrollView>
-          <Container>
+          <CategoryBtnContainer>
             <View>
               <SearchCategoryBtn
                 onPress={() =>
@@ -94,7 +93,7 @@ class RecordingRoomSearchScreen extends React.Component {
                 <Text>지하철로 찾기</Text>
               </SearchCategoryBtn>
             </View>
-          </Container>
+          </CategoryBtnContainer>
 
           <Text>추천 합주실</Text>
           <ScrollView
