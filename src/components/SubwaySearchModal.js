@@ -18,6 +18,7 @@ const Container = styled.View`
   padding-top: 10;
   padding-right: 10;
   padding-bottom: 10;
+  flex: 1;
 `;
 
 const Header = styled.View`
@@ -50,7 +51,7 @@ export default (SubwaySearchModal = ({ visible, close }) => (
         </CloseBtn>
         <Text>지하철 역으로 찾기</Text>
       </Header>
-      <SubwaySearchComponent />
+      <SubwaySearchComponent submit={close} />
     </Container>
   </Modal>
 ));

@@ -33,6 +33,8 @@ const TabContainer = styled.View`
   height: 50;
   align-items: center;
   flex-direction: row;
+  border-bottom-width: 1;
+  border-bottom-color: lightgray;
 `;
 
 const Tab = styled.TouchableHighlight`
@@ -52,7 +54,7 @@ class MapSelectSearchModal extends React.Component {
     isRegionTabOpen: true,
   };
   render() {
-    const { visible, close } = this.props;
+    const { visible, close, onSubmit } = this.props;
     return (
       <Modal
         animationType="slide"
@@ -88,7 +90,10 @@ class MapSelectSearchModal extends React.Component {
               {this.state.isRegionTabOpen ? (
                 <RegionSelectComponent />
               ) : (
-                <SubwaySearchComponent />
+                <SubwaySearchComponent submit={(latlon) => {
+                  onSubmit(latlon);
+                  close();
+                }} />
               )}
             </View>
           </View>
